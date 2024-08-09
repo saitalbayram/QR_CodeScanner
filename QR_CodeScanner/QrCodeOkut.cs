@@ -8,50 +8,166 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessLayer.Concrete;
+using EntityLayer.Concrete;
+using DevExpress.DataAccess.Native.Data;
+using DataAccesLayer.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace QR_CodeScanner
 {
     public partial class QrCodeOkut : DevExpress.XtraEditors.XtraForm
     {
+        IPosetPaketManager _posetPaketManager;
         public QrCodeOkut()
         {
             InitializeComponent();
+            _posetPaketManager = new(new EfPosetPaketDal());
+
         }
 
-        private void textEdit1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                int posetBarkod = Convert.ToInt32(textEditPosetBarkod.Text);
-                if(listBoxControl1.Items.Count == 0 )
-                {
-                    listBoxControl1.Items.Add(textEditPosetBarkod.Text);
-                }
-                else
-                {
-                    // İlk öğeyi metin olarak alın
-                    string firstItemText = listBoxControl1.Items[0].ToString();
-                    string posetBarkod = textEditPosetBarkod.Text;
-                    // Sayısal karşılıklarını kullanarak döngüyü çalıştırın
-                    int firstItemNumber = Convert.ToInt32(firstItemText);
-                    int posetBarkodNumber = Convert.ToInt32(posetBarkodText);
 
-                    for (int i = firstItemNumber; i <= posetBarkodNumber; i++)
-                    {
-                        // Sıfırları koruyarak metin formatında ekleyin
-                        string itemText = i.ToString("D" + textEditPosetBarkod.Length);
-                        listBoxControl1.Items.Add(itemText);
-                    }
+        private void textEditPosetBarkod_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void textEditPosetBarkod_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                if (gridControl1.DataSource is System.Data.DataTable dataTable && !string.IsNullOrEmpty(textEditPosetBarkod.Text))
+                {
+                    DataRow newRow = dataTable.NewRow();
+                    int newId = dataTable.Rows.Count + 1;
+                    newRow["ID"] = newId;
+                    newRow["PosetBarkod"] = textEditPosetBarkod.Text; // PosetBarkod sütunu için TextEdit'teki değer
+                    newRow["CreatedDate"] = DateTime.Now; // CreatedDate sütunu için mevcut tarih
+
+                    // Satırı DataTable'a ekleyin
+                    dataTable.Rows.Add(newRow);
                 }
-               
+
+                textEditPosetBarkod.Text = string.Empty;
+
+            }
+        }
+        System.Data.DataTable table = new System.Data.DataTable();
+        private void QrCodeOkut_Load(object sender, EventArgs e)
+        {
+
+            table.Columns.Add("ID", typeof(int));
+            table.Columns.Add("PosetBarkod", typeof(string));
+            table.Columns.Add("PaketBarkod", typeof(string));
+            table.Columns.Add("CreatedDate", typeof(DateTime));
+            gridControl1.DataSource = table;
+        }
+
+        private void gridControl1_MouseDown(object sender, MouseEventArgs e)
+        {
+            var position = MousePosition;
+            if (e.Button == MouseButtons.Right)
+            {
+                popupMenuGrid.ShowPopup(position);
             }
         }
 
-        private void KodEkle()
+        private void barButtonItemDuzenle_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string QrCode = textEditPosetBarkod.Text;
+            gridView1.OptionsBehavior.Editable = true;
+        }
 
+        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            gridView1.OptionsBehavior.Editable = false;
+        }
 
+        private void gridView1_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        {
+            gridView1.OptionsBehavior.Editable = false;
+        }
+
+        private void Kaydet()
+        {
+            try
+            {
+                string paketBarkod = textEditPaketBarkod.Text;
+
+                if (!string.IsNullOrEmpty(paketBarkod))
+                {
+
+                    if (gridControl1.DataSource is System.Data.DataTable dataTable)
+                    {
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            if (string.IsNullOrEmpty(row["PaketBarkod"].ToString()))
+                            {
+                                row["PaketBarkod"] = paketBarkod;
+                            }
+                        }
+                    }
+                    SaveToDatabase();
+                    ClearGridView();
+                    textEditPosetBarkod.Focus();
+
+                }
+                else
+                {
+                    XtraMessageBox.Show("Lütfen Paket Barkodu Yazınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Kaydet();
+
+        }
+
+        private void SaveToDatabase()
+        {
+            if (gridControl1.DataSource is System.Data.DataTable dataTable)
+            {
+                List<PosetPaket> posetPakets = new List<PosetPaket>();
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    PosetPaket posetPaket = new PosetPaket
+                    {
+                        PosetBarkod = row["PosetBarkod"].ToString(),
+                        PaketBarkod = row["PaketBarkod"].ToString(),
+                        CreatedDate = Convert.ToDateTime(row["CreatedDate"])
+                    };
+
+                    posetPakets.Add(posetPaket);
+
+                }
+                _posetPaketManager.TInsert(posetPakets);
+            }
+
+        }
+
+        private void ClearGridView()
+        {
+            if (gridControl1.DataSource is System.Data.DataTable dataTable)
+            {
+                dataTable.Clear();
+                gridControl1.DataSource = dataTable;
+                textEditPaketBarkod.Text = string.Empty;
+            }
+        }
+
+        private void textEditPaketBarkod_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                Kaydet();
+            }
         }
     }
 }

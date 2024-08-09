@@ -26,11 +26,22 @@ namespace QR_CodeScanner
         QrCodeOkut qrCodeOkut;
         private void BtnQrOkut_Click(object sender, EventArgs e)
         {
-            if(qrCodeOkut == null || qrCodeOkut.IsDisposed)
+            if (qrCodeOkut == null || qrCodeOkut.IsDisposed)
             {
                 qrCodeOkut = new QrCodeOkut();
                 qrCodeOkut.MdiParent = this;
                 qrCodeOkut.Show();
+            }
+        }
+
+        FmEtiketler fmEtiketler;
+        private void BtnEtiketler_Click(object sender, EventArgs e)
+        {
+            if(fmEtiketler == null || fmEtiketler.IsDisposed)
+            {
+                fmEtiketler = new FmEtiketler();
+                fmEtiketler.MdiParent = this;
+                fmEtiketler.Show();
             }
         }
     }

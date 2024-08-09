@@ -1,17 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <OutputType>WinExe</OutputType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
+
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="DevExpress.Win.Design" Version="23.2.6" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
       <PrivateAssets>all</PrivateAssets>
@@ -23,14 +18,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Identity.Client.NativeInterop" Version="0.16.2" />
-    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="Uno.UI" Version="5.3.114" />
   </ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
-		<ProjectReference Include="..\DataAccesLayer\DataAccesLayer.csproj" />
 		<ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
-	    <ProjectReference Include="..\CoreLayer\CoreLayer.csproj" />
+		<ProjectReference Include="..\CoreLayer\CoreLayer.csproj" />
 	</ItemGroup>
 </Project>
