@@ -263,6 +263,7 @@
             bbiSaveFile.Id = 36;
             bbiSaveFile.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S);
             bbiSaveFile.Name = "bbiSaveFile";
+            bbiSaveFile.ItemClick += bbiSaveFile_ItemClick;
             // 
             // commandBarItem3
             // 

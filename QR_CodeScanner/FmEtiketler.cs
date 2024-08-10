@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using EntityLayer.Concrete;
 using DataAccesLayer.Concrete;
+using CoreLayer.Configurations;
+using CoreLayer.Concrete;
 
 namespace QR_CodeScanner
 {
@@ -51,8 +53,19 @@ namespace QR_CodeScanner
             files.ModuleNama = "Etiket";
 
 
-            
+
             etiketReport.Show();
+        }
+
+        private void barButtonItemDuzenle_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            RegistrySettings settings = new RegistrySettings();
+            settings.ServerName = ".";
+            settings.Authentication = "Sql Server Authentication";
+            settings.Database = "QrCodeScanner";
+            settings.UserName = "sa";
+            settings.Pass = "Turbim27";
+            RegistryHelper.RegisterKayitYaz(settings);
         }
     }
 }

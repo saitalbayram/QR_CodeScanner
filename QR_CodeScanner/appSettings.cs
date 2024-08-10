@@ -19,21 +19,22 @@ namespace QR_CodeScanner
 
         static DevExpress.DataAccess.Sql.SqlDataSource _defaultDataSource;
         public static DevExpress.DataAccess.Sql.SqlDataSource defaultDataSource
-        {
-            get
-            {
-                if (_defaultDataSource == null)
-                {
-                    RegistrySettings registrySettings = RegistryHelper.RegisterKayitOku();
+        //{
+        //    get
+        //    {
+        //        if (_defaultDataSource == null)
+        //        {
+        //            RegistrySettings registrySettings = RegistryHelper.RegisterKayitOku();
 
-                    DevExpress.DataAccess.Sql.SqlDataSource dsource = new DevExpress.DataAccess.Sql.SqlDataSource();
-                    dsource.ConnectionName = "QRCodeScanner.ConnectionString";
-                    dsource.ConnectionParameters = new DevExpress.DataAccess.ConnectionParameters.MsSqlConnectionParameters(registrySettings.ServerName, registrySettings.Database, registrySettings.UserName, registrySettings.Pass, (registrySettings.UserName + "" == "") ? DevExpress.DataAccess.ConnectionParameters.MsSqlAuthorizationType.Windows : DevExpress.DataAccess.ConnectionParameters.MsSqlAuthorizationType.SqlServer);
+        //            DevExpress.DataAccess.Sql.SqlDataSource dsource = new DevExpress.DataAccess.Sql.SqlDataSource();
+        //            dsource.ConnectionName = "QRCodeScanner.ConnectionString";
+        //            dsource.ConnectionOptions = new DevExpress.DataAccess.ConnectionParameters.MsSqlAuthorizationType();
+        //            dsource.ConnectionParameters = new DevExpress.DataAccess.ConnectionParameters.MsSqlConnectionParameters(registrySettings.ServerName, registrySettings.Database, registrySettings.UserName, registrySettings.Pass, (registrySettings.UserName + "" == "") ? DevExpress.DataAccess.ConnectionParameters.MsSqlAuthorizationType.Windows : DevExpress.DataAccess.ConnectionParameters.MsSqlAuthorizationType.SqlServer);
                     
-                    _defaultDataSource = dsource;
-                }
-                return _defaultDataSource;
-            }
+        //            _defaultDataSource = dsource;
+        //        }
+        //        return _defaultDataSource;
+        //    }
         }
     }
 }
