@@ -22,7 +22,7 @@ namespace BusinessLayer.Concrete
             return _appUserDal.TGetList();
         }
 
-        public void TInsert(List<AppUser> t)
+        public void TInsert(AppUser t)
         {
             _appUserDal.TInsert(t);
         }

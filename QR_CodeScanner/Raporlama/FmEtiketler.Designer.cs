@@ -34,7 +34,6 @@
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             colID = new DevExpress.XtraGrid.Columns.GridColumn();
             colFileName = new DevExpress.XtraGrid.Columns.GridColumn();
-            colModuleNama = new DevExpress.XtraGrid.Columns.GridColumn();
             colReportFile = new DevExpress.XtraGrid.Columns.GridColumn();
             popupMenu1 = new DevExpress.XtraBars.PopupMenu(components);
             barButtonItemEkle = new DevExpress.XtraBars.BarButtonItem();
@@ -46,6 +45,7 @@
             barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             posetPaketBindingSource = new System.Windows.Forms.BindingSource(components);
+            colModuleName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)filesBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
@@ -72,7 +72,7 @@
             // 
             // gridView1
             // 
-            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colID, colFileName, colModuleNama, colReportFile });
+            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colID, colFileName, colModuleName, colReportFile });
             gridView1.GridControl = gridControl1;
             gridView1.Name = "gridView1";
             gridView1.MouseDown += gridView1_MouseDown;
@@ -91,17 +91,8 @@
             colFileName.FieldName = "FileName";
             colFileName.Name = "colFileName";
             colFileName.Visible = true;
-            colFileName.VisibleIndex = 1;
+            colFileName.VisibleIndex = 2;
             colFileName.Width = 297;
-            // 
-            // colModuleNama
-            // 
-            colModuleNama.Caption = "Modül Adı";
-            colModuleNama.FieldName = "ModuleNama";
-            colModuleNama.Name = "colModuleNama";
-            colModuleNama.Visible = true;
-            colModuleNama.VisibleIndex = 2;
-            colModuleNama.Width = 298;
             // 
             // colReportFile
             // 
@@ -180,6 +171,14 @@
             // 
             posetPaketBindingSource.DataSource = typeof(EntityLayer.Concrete.PosetPaket);
             // 
+            // colModuleName
+            // 
+            colModuleName.Caption = "Modül Adı";
+            colModuleName.FieldName = "ModuleName";
+            colModuleName.Name = "colModuleName";
+            colModuleName.Visible = true;
+            colModuleName.VisibleIndex = 1;
+            // 
             // FmEtiketler
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,8 +217,8 @@
         private System.Windows.Forms.BindingSource filesBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colID;
         private DevExpress.XtraGrid.Columns.GridColumn colFileName;
-        private DevExpress.XtraGrid.Columns.GridColumn colModuleNama;
         private DevExpress.XtraGrid.Columns.GridColumn colReportFile;
         private System.Windows.Forms.BindingSource posetPaketBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colModuleName;
     }
 }

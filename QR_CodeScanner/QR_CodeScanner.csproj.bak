@@ -10,8 +10,7 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Win.BonusSkins" Version="24.1.4" />
-    <PackageReference Include="DevExpress.Win.Design" Version="24.1.4" />
+    <PackageReference Include="DevExpress.Win.Design" Version="23.2.6" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">

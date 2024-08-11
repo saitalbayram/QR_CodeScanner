@@ -8,7 +8,7 @@ namespace DataAccesLayer.Abstract
 {
     public interface IGenericDal<T> where T: class
     {
-        void TInsert(List<T> t);
+        void TInsert(T t);
         void TUpdate(T t);
         void TDelete(T t);
         List<T> TGetList();

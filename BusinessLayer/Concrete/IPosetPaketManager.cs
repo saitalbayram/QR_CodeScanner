@@ -22,7 +22,7 @@ namespace BusinessLayer.Concrete
             return _posetPaketDal.TGetList();
         }
 
-        public void TInsert(List<PosetPaket> t)
+        public void TInsert(PosetPaket t)
         {
             _posetPaketDal.TInsert(t);
         }

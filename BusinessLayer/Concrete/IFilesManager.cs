@@ -11,30 +11,30 @@ namespace BusinessLayer.Concrete
 {
     public class IFilesManager(IFilesDal filesDal) : IFilesService
     {
-        IFilesService _filesService;
+        IFilesDal _filesDal = filesDal;
         public void TDelete(Files t)
         {
-            _filesService.TDelete(t);
+            _filesDal.TDelete(t);
         }
 
         public Files? TGetById(int? id)
         {
-            return _filesService.TGetById(id);
+            return _filesDal.TGetById(id);
         }
 
         public List<Files> TGetList()
         {
-            return _filesService.TGetList();
+            return _filesDal.TGetList();
         }
 
-        public void TInsert(List<Files> t)
+        public void TInsert(Files t)
         {
-            _filesService.TInsert(t);
+            _filesDal.TInsert(t);
         }
 
         public void TUpdate(Files t)
         {
-            _filesService.TUpdate(t);
+            _filesDal.TUpdate(t);
         }
     }
 }

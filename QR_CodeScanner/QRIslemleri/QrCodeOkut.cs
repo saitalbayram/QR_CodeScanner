@@ -137,7 +137,7 @@ namespace QR_CodeScanner
                 List<PosetPaket> posetPakets = new List<PosetPaket>();
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    PosetPaket posetPaket = new PosetPaket
+                    PosetPaket posetPaket = new()
                     {
                         PosetBarkod = row["PosetBarkod"].ToString(),
                         PaketBarkod = row["PaketBarkod"].ToString(),
@@ -147,8 +147,13 @@ namespace QR_CodeScanner
                     posetPakets.Add(posetPaket);
 
                 }
-                _posetPaketManager.TInsert(posetPakets);
+
+                foreach(var item in posetPakets)
+                {
+                    _posetPaketManager.TInsert(item);
+                }
             }
+               
 
         }
 

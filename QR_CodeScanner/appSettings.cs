@@ -18,7 +18,7 @@ namespace QR_CodeScanner
         }
 
         static DevExpress.DataAccess.Sql.SqlDataSource _defaultDataSource;
-        public static DevExpress.DataAccess.Sql.SqlDataSource defaultDataSource
+        public static DevExpress.DataAccess.Sql.SqlDataSource defaultDataSource;
         //{
         //    get
         //    {
@@ -35,6 +35,6 @@ namespace QR_CodeScanner
         //        }
         //        return _defaultDataSource;
         //    }
-        }
+       // }
     }
 }

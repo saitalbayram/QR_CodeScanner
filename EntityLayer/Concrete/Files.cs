@@ -10,7 +10,7 @@ namespace EntityLayer.Concrete
     {
         public int ID { get; set; }
         public string? FileName { get; set; }
-        public string? ModuleNama { get; set; }
+        public string? ModuleName { get; set; }
         public byte[]? ReportFile { get; set; }
     }
 }

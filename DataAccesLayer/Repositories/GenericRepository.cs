@@ -37,7 +37,7 @@ namespace DataAccesLayer.Repositories
         }
 
 
-        public void TInsert(List<T> t)
+        public void TInsert(T t)
         {
             using var c = new Context();
             c.AddRange(t);
