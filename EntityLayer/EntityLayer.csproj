@@ -18,6 +18,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Identity.Client.NativeInterop" Version="0.16.2" />
+    <PackageReference Include="System.ServiceModel.Http" Version="8.0.0" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="8.0.0" />
   </ItemGroup>
 
 

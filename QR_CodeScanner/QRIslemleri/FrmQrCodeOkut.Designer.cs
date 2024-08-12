@@ -1,6 +1,6 @@
 ﻿namespace QR_CodeScanner
 {
-    partial class QrCodeOkut
+    partial class FrmQrCodeOkut
     {
         /// <summary>
         /// Required designer variable.

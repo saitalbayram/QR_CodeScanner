@@ -124,4 +124,43 @@
   <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="QRCode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\QRCode.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="editnames1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\editnames1.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="sparklinewinloss" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sparklinewinloss.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="cards" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cards.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="bo_lead" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bo_lead.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="selectdatamember" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\selectdatamember.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="QRCode1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\QRCode1.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="editnames2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\editnames2.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="sparklinewinloss1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sparklinewinloss1.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="cards1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cards1.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="bo_lead1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bo_lead1.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="selectdatamember1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\selectdatamember1.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="viewsettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\viewsettings.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
 </root>

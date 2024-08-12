@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QR_CodeScanner.Main;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace QR_CodeScanner
 
             Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture("tr-TR");
 
-            Application.Run(new MainForm());
+            Application.Run(new FrmMain());
         }
     }
 }

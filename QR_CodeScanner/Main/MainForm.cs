@@ -20,12 +20,12 @@ namespace QR_CodeScanner
         }
 
 
-        QrCodeOkut qrCodeOkut;
+        FrmQrCodeOkut qrCodeOkut;
         private void BtnQrOkut_Click(object sender, EventArgs e)
         {
             if (qrCodeOkut == null || qrCodeOkut.IsDisposed)
             {
-                qrCodeOkut = new QrCodeOkut();
+                qrCodeOkut = new FrmQrCodeOkut();
                 qrCodeOkut.MdiParent = this;
                 qrCodeOkut.Show();
             }

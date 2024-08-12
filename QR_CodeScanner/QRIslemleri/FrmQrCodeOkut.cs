@@ -16,10 +16,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace QR_CodeScanner
 {
-    public partial class QrCodeOkut : DevExpress.XtraEditors.XtraForm
+    public partial class FrmQrCodeOkut : DevExpress.XtraEditors.XtraForm
     {
         IPosetPaketManager _posetPaketManager;
-        public QrCodeOkut()
+        public FrmQrCodeOkut()
         {
             InitializeComponent();
             _posetPaketManager = new(new EfPosetPaketDal());
