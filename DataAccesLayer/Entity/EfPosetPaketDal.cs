@@ -1,4 +1,5 @@
 ﻿using DataAccesLayer.Abstract;
+using DataAccesLayer.Concrete;
 using DataAccesLayer.Repositories;
 using EntityLayer.Concrete;
 using System;
@@ -11,5 +12,6 @@ namespace DataAccesLayer.Entity
 {
     public class EfPosetPaketDal : GenericRepository<PosetPaket>, IPosetPaketDal
     {
+       
     }
 }

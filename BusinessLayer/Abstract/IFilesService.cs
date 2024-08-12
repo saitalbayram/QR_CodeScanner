@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IFilesService : IGenericService<Files>
     {
+        public string GetFileFromNameAndModule(string fileName, string ModuleName);
     }
 }

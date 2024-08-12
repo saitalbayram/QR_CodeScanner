@@ -12,6 +12,12 @@ namespace BusinessLayer.Concrete
     public class IFilesManager(IFilesDal filesDal) : IFilesService
     {
         IFilesDal _filesDal = filesDal;
+
+        public string GetFileFromNameAndModule(string fileName, string ModuleName)
+        {
+            return _filesDal.GetFileFromNameAndModule(fileName, ModuleName);
+        }
+
         public void TDelete(Files t)
         {
             _filesDal.TDelete(t);

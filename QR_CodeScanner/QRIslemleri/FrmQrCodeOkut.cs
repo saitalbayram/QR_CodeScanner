@@ -174,5 +174,6 @@ namespace QR_CodeScanner
                 Kaydet();
             }
         }
+
     }
 }

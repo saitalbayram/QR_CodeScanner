@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             BtnQrCodeOkut = new DevExpress.XtraBars.BarButtonItem();
             BtnQrIslemleri = new DevExpress.XtraBars.BarButtonItem();
@@ -37,13 +38,13 @@
             BtnKullanicilar = new DevExpress.XtraBars.BarButtonItem();
             BtnVeritabaniAyarlari = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            BtnBaglantiAyarlari = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             Raporlama = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(components);
-            BtnBaglantiAyarlari = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)ribbon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)xtraTabbedMdiManager1).BeginInit();
             SuspendLayout();
@@ -63,7 +64,7 @@
             // 
             BtnQrCodeOkut.Caption = "Qr Code Okut";
             BtnQrCodeOkut.Id = 1;
-            BtnQrCodeOkut.ImageOptions.SvgImage = Properties.Resources.QRCode;
+            BtnQrCodeOkut.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("BtnQrCodeOkut.ImageOptions.SvgImage");
             BtnQrCodeOkut.Name = "BtnQrCodeOkut";
             BtnQrCodeOkut.ItemClick += BtnQrCodeOkut_ItemClick;
             // 
@@ -79,7 +80,7 @@
             // 
             BtnRaporlar.Caption = "Raporlar";
             BtnRaporlar.Id = 3;
-            BtnRaporlar.ImageOptions.SvgImage = Properties.Resources.sparklinewinloss;
+            BtnRaporlar.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("BtnRaporlar.ImageOptions.SvgImage");
             BtnRaporlar.Name = "BtnRaporlar";
             BtnRaporlar.ItemClick += BtnRaporlar_ItemClick;
             // 
@@ -87,7 +88,7 @@
             // 
             BtnEtiketler.Caption = "Etiketler";
             BtnEtiketler.Id = 4;
-            BtnEtiketler.ImageOptions.SvgImage = Properties.Resources.cards;
+            BtnEtiketler.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("BtnEtiketler.ImageOptions.SvgImage");
             BtnEtiketler.Name = "BtnEtiketler";
             BtnEtiketler.ItemClick += BtnEtiketler_ItemClick;
             // 
@@ -95,7 +96,7 @@
             // 
             BtnKullanicilar.Caption = "Kullanıcılar";
             BtnKullanicilar.Id = 5;
-            BtnKullanicilar.ImageOptions.SvgImage = Properties.Resources.bo_lead;
+            BtnKullanicilar.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("BtnKullanicilar.ImageOptions.SvgImage");
             BtnKullanicilar.Name = "BtnKullanicilar";
             BtnKullanicilar.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             BtnKullanicilar.ItemClick += BtnKullanicilar_ItemClick;
@@ -104,7 +105,7 @@
             // 
             BtnVeritabaniAyarlari.Caption = "Veritabanı İşlemleri";
             BtnVeritabaniAyarlari.Id = 6;
-            BtnVeritabaniAyarlari.ImageOptions.SvgImage = Properties.Resources.selectdatamember;
+            BtnVeritabaniAyarlari.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("BtnVeritabaniAyarlari.ImageOptions.SvgImage");
             BtnVeritabaniAyarlari.Name = "BtnVeritabaniAyarlari";
             BtnVeritabaniAyarlari.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             BtnVeritabaniAyarlari.ItemClick += BtnVeritabaniAyarlari_ItemClick;
@@ -114,6 +115,13 @@
             barButtonItem7.Caption = "barButtonItem7";
             barButtonItem7.Id = 7;
             barButtonItem7.Name = "barButtonItem7";
+            // 
+            // BtnBaglantiAyarlari
+            // 
+            BtnBaglantiAyarlari.Caption = "Bağlantı Ayarları";
+            BtnBaglantiAyarlari.Id = 8;
+            BtnBaglantiAyarlari.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("BtnBaglantiAyarlari.ImageOptions.SvgImage");
+            BtnBaglantiAyarlari.Name = "BtnBaglantiAyarlari";
             // 
             // ribbonPage1
             // 
@@ -153,13 +161,6 @@
             // xtraTabbedMdiManager1
             // 
             xtraTabbedMdiManager1.MdiParent = this;
-            // 
-            // BtnBaglantiAyarlari
-            // 
-            BtnBaglantiAyarlari.Caption = "Bağlantı Ayarları";
-            BtnBaglantiAyarlari.Id = 8;
-            BtnBaglantiAyarlari.ImageOptions.SvgImage = Properties.Resources.viewsettings;
-            BtnBaglantiAyarlari.Name = "BtnBaglantiAyarlari";
             // 
             // FrmMain
             // 

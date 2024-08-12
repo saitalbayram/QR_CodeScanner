@@ -9,5 +9,6 @@ namespace DataAccesLayer.Abstract
 {
     public interface IFilesDal: IGenericDal<Files>
     {
+        public string GetFileFromNameAndModule(string fileName, string ModuleName);
     }
 }
