@@ -9,6 +9,6 @@ namespace DataAccesLayer.Abstract
 {
     public interface IPosetPaketDal : IGenericDal<PosetPaket>
     {
-    
+        public PosetPaket GetPackFromMaxId();
     }
 }

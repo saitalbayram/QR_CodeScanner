@@ -86,6 +86,9 @@ namespace DataAccesLayer.Migrations
                     b.Property<string>("PosetBarkod")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("SilinecekSatir")
+                        .HasColumnType("bit");
+
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 

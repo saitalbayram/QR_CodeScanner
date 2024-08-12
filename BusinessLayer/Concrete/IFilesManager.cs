@@ -13,7 +13,7 @@ namespace BusinessLayer.Concrete
     {
         IFilesDal _filesDal = filesDal;
 
-        public string GetFileFromNameAndModule(string fileName, string ModuleName)
+        public byte[]? GetFileFromNameAndModule(string fileName, string ModuleName)
         {
             return _filesDal.GetFileFromNameAndModule(fileName, ModuleName);
         }

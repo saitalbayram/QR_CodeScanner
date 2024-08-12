@@ -7,6 +7,12 @@ namespace BusinessLayer.Concrete
     public class IPosetPaketManager(IPosetPaketDal posetPaketDal) : IPosetPaketService
     {
         IPosetPaketDal _posetPaketDal = posetPaketDal;
+
+        public PosetPaket GetPackFromMaxId()
+        {
+            return _posetPaketDal.GetPackFromMaxId();
+        }
+
         public void TDelete(PosetPaket t)
         {
             _posetPaketDal.TDelete(t);

@@ -12,6 +12,10 @@ namespace DataAccesLayer.Entity
 {
     public class EfPosetPaketDal : GenericRepository<PosetPaket>, IPosetPaketDal
     {
-       
+       public PosetPaket GetPackFromMaxId()
+        {
+            using var c = new Context();
+            return c.PosetPakets.OrderByDescending(x=> x.ID).FirstOrDefault();
+        }
     }
 }

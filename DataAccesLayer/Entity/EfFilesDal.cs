@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace DataAccesLayer.Entity
 {
-    public class EfFilesDal : GenericRepository<Files> ,IFilesDal
+    public class EfFilesDal : GenericRepository<Files>, IFilesDal
     {
-        public string GetFileFromNameAndModule(string fileName, string ModuleName)
+        public byte[]? GetFileFromNameAndModule(string fileName, string ModuleName)
         {
             using var c = new Context();
 
-            return c.Files.Where(x => x.FileName == fileName && x.ModuleName == ModuleName).Select(x => x.ReportFile).FirstOrDefault().ToString();
+            return [.. c.Files.Where(x => x.FileName == fileName && x.ModuleName == ModuleName).Select(x => x.ReportFile).FirstOrDefault()];
         }
     }
 }

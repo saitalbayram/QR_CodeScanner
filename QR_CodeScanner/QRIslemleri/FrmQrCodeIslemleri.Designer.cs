@@ -37,6 +37,7 @@
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             posetPaketBindingSource = new System.Windows.Forms.BindingSource(components);
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            SilinecekSatir = new DevExpress.XtraGrid.Columns.GridColumn();
             colID = new DevExpress.XtraGrid.Columns.GridColumn();
             colPosetBarkod = new DevExpress.XtraGrid.Columns.GridColumn();
             colPaketBarkod = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -135,12 +136,19 @@
             // 
             // gridView1
             // 
-            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colID, colPosetBarkod, colPaketBarkod, colUserID, colCreatedDate });
+            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { SilinecekSatir, colID, colPosetBarkod, colPaketBarkod, colUserID, colCreatedDate });
             gridView1.GridControl = gridControl1;
             gridView1.Name = "gridView1";
             gridView1.OptionsBehavior.Editable = false;
             gridView1.OptionsView.ShowAutoFilterRow = true;
+            gridView1.CellValueChanged += gridView1_CellValueChanged;
+            gridView1.RowUpdated += gridView1_RowUpdated;
             gridView1.MouseDown += gridView1_MouseDown;
+            // 
+            // SilinecekSatir
+            // 
+            SilinecekSatir.Caption = "Silinecek Satır";
+            SilinecekSatir.Name = "SilinecekSatir";
             // 
             // colID
             // 
@@ -205,6 +213,7 @@
             barButtonItemSil.Id = 1;
             barButtonItemSil.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemSil.ImageOptions.SvgImage");
             barButtonItemSil.Name = "barButtonItemSil";
+            barButtonItemSil.ItemClick += barButtonItemSil_ItemClick;
             // 
             // barButtonItemYeniKodOkut
             // 
@@ -220,6 +229,7 @@
             barButtonItemTekrarYazdir.Id = 3;
             barButtonItemTekrarYazdir.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemTekrarYazdir.ImageOptions.SvgImage");
             barButtonItemTekrarYazdir.Name = "barButtonItemTekrarYazdir";
+            barButtonItemTekrarYazdir.ItemClick += barButtonItemTekrarYazdir_ItemClick;
             // 
             // barButtonItemGorunumuKaydet
             // 
@@ -227,6 +237,7 @@
             barButtonItemGorunumuKaydet.Id = 4;
             barButtonItemGorunumuKaydet.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemGorunumuKaydet.ImageOptions.SvgImage");
             barButtonItemGorunumuKaydet.Name = "barButtonItemGorunumuKaydet";
+            barButtonItemGorunumuKaydet.ItemClick += barButtonItemGorunumuKaydet_ItemClick;
             // 
             // barManager1
             // 
@@ -298,6 +309,7 @@
             simpleButtonKaydet.Size = new System.Drawing.Size(75, 28);
             simpleButtonKaydet.TabIndex = 5;
             simpleButtonKaydet.Text = "Kaydet";
+            simpleButtonKaydet.Click += simpleButtonKaydet_Click;
             // 
             // labelControl3
             // 
@@ -372,5 +384,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.SimpleButton simpleButtonVazgec;
         private DevExpress.XtraEditors.SimpleButton simpleButtonKaydet;
+        private DevExpress.XtraGrid.Columns.GridColumn SilinecekSatir;
     }
 }

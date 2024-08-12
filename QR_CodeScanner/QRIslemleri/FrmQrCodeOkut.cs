@@ -112,6 +112,7 @@ namespace QR_CodeScanner
                     ClearGridView();
                     textEditPosetBarkod.Focus();
 
+
                 }
                 else
                 {
@@ -120,7 +121,7 @@ namespace QR_CodeScanner
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //XtraMessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -132,12 +133,13 @@ namespace QR_CodeScanner
 
         private void SaveToDatabase()
         {
+            PosetPaket posetPaket = null;
             if (gridControl1.DataSource is System.Data.DataTable dataTable)
             {
                 List<PosetPaket> posetPakets = new List<PosetPaket>();
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    PosetPaket posetPaket = new()
+                    posetPaket = new()
                     {
                         PosetBarkod = row["PosetBarkod"].ToString(),
                         PaketBarkod = row["PaketBarkod"].ToString(),
@@ -148,12 +150,21 @@ namespace QR_CodeScanner
 
                 }
 
-                foreach(var item in posetPakets)
+                if (posetPakets.Count > 0)
                 {
-                    _posetPaketManager.TInsert(item);
+                    foreach (var item in posetPakets)
+                    {
+                        _posetPaketManager.TInsert(item);
+                    }
+                    appSettings.PrintDocument("Etiket", "QR Code", posetPaket.PaketBarkod.ToString());
                 }
+                else
+                {
+                    XtraMessageBox.Show("Lütfen önce poşet barkodlarını okutun!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
             }
-               
+
 
         }
 
@@ -169,11 +180,17 @@ namespace QR_CodeScanner
 
         private void textEditPaketBarkod_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 Kaydet();
             }
         }
 
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            var pack = _posetPaketManager.GetPackFromMaxId();
+
+            appSettings.PrintDocument("Etiket", "QR Code", pack.PaketBarkod);
+        }
     }
 }

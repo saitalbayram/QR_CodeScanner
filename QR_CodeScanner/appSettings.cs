@@ -15,8 +15,15 @@ using System.IO;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
-using PdfiumViewer;
 using System.Windows.Forms;
+using System.Drawing;
+using DevExpress.XtraReports.UI;
+using DevExpress.XtraReports.Wizards;
+using static iText.IO.Image.Jpeg2000ImageData;
+using System.Data;
+using System.Threading;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace QR_CodeScanner
 {
@@ -44,69 +51,74 @@ namespace QR_CodeScanner
         //        }
         //        return _defaultDataSource;
         //    }
-       // }
+        // }
 
 
-        public static void PrintFile(string fileName, string ModuleName)
+        public static void PrintDocument(string moduleName = "", string fileName = "", string parameters = "")
         {
-            IFilesManager filesManager = new(new EfFilesDal());
-            string xmlData = filesManager.GetFileFromNameAndModule(fileName, ModuleName);
-
-            if (!string.IsNullOrEmpty(xmlData))
+            try
             {
-                // XML'yi PDF'e dönüştür
-                byte[] pdfData = ConvertXmlToPdf(xmlData);
+                // LogWriter.LogYaz(KayitID + " nolu barkod yazdırılıyor.. Report ID=" + ReportID, LogWriter.renk.sari);
 
-                if (pdfData != null)
+                IFilesManager filesManager = new(new EfFilesDal());
+
+                var fileBytes = filesManager.GetFileFromNameAndModule(fileName, moduleName);
+                if (fileBytes != null)
                 {
-                    using (MemoryStream ms = new MemoryStream(pdfData))
+                    using var stream = new System.IO.MemoryStream(fileBytes, true);
+                    XtraReport report = XtraReport.FromStream(stream);
+
+                    if(report != null)
                     {
-                        using (var pdfDocument = PdfiumViewer.PdfDocument.Load(ms))
+                        if (!string.IsNullOrEmpty(parameters) && report.Parameters.Count > 0)
                         {
-                            PrintDocument printDocument = new PrintDocument();
-                            printDocument.PrintPage += (sender, e) =>
-                            {
-                                using (var pdfViewer = new PdfiumViewer.PdfViewer())
-                                {
-                                    // PDF dosyasını yazdır
-                                    //pdfViewer.pr(pdfDocument, e);
-                                }
-                            };
-
-                            PrintDialog printDialog = new PrintDialog();
-                            printDialog.Document = printDocument;
-
-                            if (printDialog.ShowDialog() == DialogResult.OK)
-                            {
-                                printDocument.Print();
-                            }
+                            report.Parameters[0].Value = parameters;
                         }
+
+                        report.Print();
                     }
+                    else
+                    {
+                        XtraMessageBox.Show("Rapor formatı oluşturulmamış veya yanlış oluşturulmuş", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
             }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }       
+          
+
+
+        }
+        public static void GridViewGorunumuKaydet(GridView grid, string formAdi)
+        {
+            try
+            {
+                string patch = "Bt.glb.Grid_XML_Patha" + formAdi + ".xml";
+                grid.SaveLayoutToXml(patch);
+            }
+            catch (Exception hata)
+            {
+                XtraMessageBox.Show(hata.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
-
-        private static byte[] ConvertXmlToPdf(string xmlData)
+        public static void EkranGridAyarla(GridView gridView, string formAdi)
         {
-            using (MemoryStream ms = new MemoryStream())
+            try
             {
-                // PDF oluştur
-                using (PdfWriter writer = new PdfWriter(ms))
+                string fileName = "Bt.glb.Grid_XML_Patha" + formAdi + ".xml";
+                if (File.Exists(fileName))
                 {
-                    using (iText.Kernel.Pdf.PdfDocument pdfDoc = new iText.Kernel.Pdf.PdfDocument(writer))
-                    {
-                        Document document = new Document(pdfDoc);
-
-                        // XML verisini PDF formatına dönüştür
-                        document.Add(new Paragraph("XML Data:"));
-                        document.Add(new Paragraph(xmlData)); // Basit bir şekilde metin ekliyoruz
-
-                        document.Close();
-                    }
+                    gridView.RestoreLayoutFromXml(fileName);
                 }
-
-                return ms.ToArray();
+            }
+            catch (System.IO.FileNotFoundException hata)
+            {
+                XtraMessageBox.Show(hata.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

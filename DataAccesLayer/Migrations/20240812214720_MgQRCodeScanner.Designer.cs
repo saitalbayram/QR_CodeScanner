@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccesLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240812131354_MgUpdateü")]
-    partial class MgUpdateü
+    [Migration("20240812214720_MgQRCodeScanner")]
+    partial class MgQRCodeScanner
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,6 +88,9 @@ namespace DataAccesLayer.Migrations
 
                     b.Property<string>("PosetBarkod")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("SilinecekSatir")
+                        .HasColumnType("bit");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");

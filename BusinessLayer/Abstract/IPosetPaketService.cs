@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IPosetPaketService : IGenericService<PosetPaket>
     {
+        public PosetPaket GetPackFromMaxId();
     }
 }

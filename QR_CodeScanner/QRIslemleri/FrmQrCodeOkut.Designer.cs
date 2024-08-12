@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmQrCodeOkut));
             panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             labelControl2 = new DevExpress.XtraEditors.LabelControl();
             labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -65,6 +67,7 @@
             // 
             // panelControl1
             // 
+            panelControl1.Controls.Add(simpleButton2);
             panelControl1.Controls.Add(simpleButton1);
             panelControl1.Controls.Add(labelControl2);
             panelControl1.Controls.Add(labelControl1);
@@ -73,21 +76,32 @@
             panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             panelControl1.Location = new System.Drawing.Point(0, 0);
             panelControl1.Name = "panelControl1";
-            panelControl1.Size = new System.Drawing.Size(579, 83);
+            panelControl1.Size = new System.Drawing.Size(783, 89);
             panelControl1.TabIndex = 1;
+            // 
+            // simpleButton2
+            // 
+            simpleButton2.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("simpleButton2.ImageOptions.SvgImage");
+            simpleButton2.Location = new System.Drawing.Point(186, 50);
+            simpleButton2.Name = "simpleButton2";
+            simpleButton2.Size = new System.Drawing.Size(176, 33);
+            simpleButton2.TabIndex = 5;
+            simpleButton2.Text = "Son Barkodu Tekrar Yazdır";
+            simpleButton2.Click += simpleButton2_Click;
             // 
             // simpleButton1
             // 
-            simpleButton1.Location = new System.Drawing.Point(379, 53);
+            simpleButton1.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("simpleButton1.ImageOptions.SvgImage");
+            simpleButton1.Location = new System.Drawing.Point(368, 50);
             simpleButton1.Name = "simpleButton1";
-            simpleButton1.Size = new System.Drawing.Size(75, 23);
+            simpleButton1.Size = new System.Drawing.Size(86, 33);
             simpleButton1.TabIndex = 4;
             simpleButton1.Text = "Kaydet";
             simpleButton1.Click += simpleButton1_Click;
             // 
             // labelControl2
             // 
-            labelControl2.Location = new System.Drawing.Point(244, 6);
+            labelControl2.Location = new System.Drawing.Point(244, 2);
             labelControl2.Name = "labelControl2";
             labelControl2.Size = new System.Drawing.Size(69, 13);
             labelControl2.TabIndex = 3;
@@ -95,7 +109,7 @@
             // 
             // labelControl1
             // 
-            labelControl1.Location = new System.Drawing.Point(13, 6);
+            labelControl1.Location = new System.Drawing.Point(13, 2);
             labelControl1.Name = "labelControl1";
             labelControl1.Size = new System.Drawing.Size(69, 13);
             labelControl1.TabIndex = 2;
@@ -103,7 +117,7 @@
             // 
             // textEditPaketBarkod
             // 
-            textEditPaketBarkod.Location = new System.Drawing.Point(244, 25);
+            textEditPaketBarkod.Location = new System.Drawing.Point(244, 21);
             textEditPaketBarkod.Name = "textEditPaketBarkod";
             textEditPaketBarkod.Size = new System.Drawing.Size(210, 22);
             textEditPaketBarkod.TabIndex = 1;
@@ -111,7 +125,7 @@
             // 
             // textEditPosetBarkod
             // 
-            textEditPosetBarkod.Location = new System.Drawing.Point(12, 25);
+            textEditPosetBarkod.Location = new System.Drawing.Point(12, 21);
             textEditPosetBarkod.Name = "textEditPosetBarkod";
             textEditPosetBarkod.Size = new System.Drawing.Size(210, 22);
             textEditPosetBarkod.TabIndex = 0;
@@ -122,10 +136,10 @@
             // 
             gridControl1.DataSource = posetPaketBindingSource;
             gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridControl1.Location = new System.Drawing.Point(0, 83);
+            gridControl1.Location = new System.Drawing.Point(0, 89);
             gridControl1.MainView = gridView1;
             gridControl1.Name = "gridControl1";
-            gridControl1.Size = new System.Drawing.Size(579, 320);
+            gridControl1.Size = new System.Drawing.Size(783, 431);
             gridControl1.TabIndex = 2;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             gridControl1.MouseDown += gridControl1_MouseDown;
@@ -222,15 +236,15 @@
             barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             barDockControlTop.Location = new System.Drawing.Point(0, 0);
             barDockControlTop.Manager = barManager1;
-            barDockControlTop.Size = new System.Drawing.Size(579, 0);
+            barDockControlTop.Size = new System.Drawing.Size(783, 0);
             // 
             // barDockControlBottom
             // 
             barDockControlBottom.CausesValidation = false;
             barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            barDockControlBottom.Location = new System.Drawing.Point(0, 403);
+            barDockControlBottom.Location = new System.Drawing.Point(0, 520);
             barDockControlBottom.Manager = barManager1;
-            barDockControlBottom.Size = new System.Drawing.Size(579, 0);
+            barDockControlBottom.Size = new System.Drawing.Size(783, 0);
             // 
             // barDockControlLeft
             // 
@@ -238,28 +252,28 @@
             barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             barDockControlLeft.Manager = barManager1;
-            barDockControlLeft.Size = new System.Drawing.Size(0, 403);
+            barDockControlLeft.Size = new System.Drawing.Size(0, 520);
             // 
             // barDockControlRight
             // 
             barDockControlRight.CausesValidation = false;
             barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            barDockControlRight.Location = new System.Drawing.Point(579, 0);
+            barDockControlRight.Location = new System.Drawing.Point(783, 0);
             barDockControlRight.Manager = barManager1;
-            barDockControlRight.Size = new System.Drawing.Size(0, 403);
+            barDockControlRight.Size = new System.Drawing.Size(0, 520);
             // 
-            // QrCodeOkut
+            // FrmQrCodeOkut
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(579, 403);
+            ClientSize = new System.Drawing.Size(783, 520);
             Controls.Add(gridControl1);
             Controls.Add(panelControl1);
             Controls.Add(barDockControlLeft);
             Controls.Add(barDockControlRight);
             Controls.Add(barDockControlBottom);
             Controls.Add(barDockControlTop);
-            Name = "QrCodeOkut";
+            Name = "FrmQrCodeOkut";
             Text = "QR Code Okut";
             Load += QrCodeOkut_Load;
             ((System.ComponentModel.ISupportInitialize)panelControl1).EndInit();
@@ -300,5 +314,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPaketBarkod;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedDate;
         private DevExpress.XtraGrid.Columns.GridColumn colUserID;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }

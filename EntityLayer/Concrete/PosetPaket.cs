@@ -14,5 +14,6 @@ namespace EntityLayer.Concrete
         public AppUser? Users { get; set; }
         public int UserID { get; set; }
         public DateTime CreatedDate { get; set; }
+        public bool SilinecekSatir { get; set; }
     }
 }
