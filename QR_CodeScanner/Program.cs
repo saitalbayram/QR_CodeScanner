@@ -1,4 +1,7 @@
-﻿using QR_CodeScanner.Main;
+﻿using CoreLayer.Concrete;
+using CoreLayer.Configurations;
+using OnMuhasebe.Settings;
+using QR_CodeScanner.Main;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -22,7 +25,11 @@ namespace QR_CodeScanner
 
             Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture("tr-TR");
 
-            Application.Run(new FrmMain());
+            RegistrySettings registrySettings = RegistryHelper.RegisterKayitOku();
+            if (registrySettings != null ) 
+                Application.Run(new LoginForm());
+            else
+                Application.Run(new FrmDatabaseSettings());
         }
     }
 }

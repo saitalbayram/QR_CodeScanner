@@ -1,5 +1,8 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using OnMuhasebe.Settings;
 using QR_CodeScanner.QRIslemleri;
+using QR_CodeScanner.Settings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,14 +82,40 @@ namespace QR_CodeScanner.Main
             }
         }
 
+        FrmUsers frmUsers;
         private void BtnKullanicilar_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            if(frmUsers == null || frmUsers.IsDisposed)
+            {
+                frmUsers = new FrmUsers();
+                frmUsers.MdiParent = this;
+                frmUsers.Show();
+            }
+            else
+            {
+                frmUsers?.Activate();
+            }
         }
 
         private void BtnVeritabaniAyarlari_ItemClick(object sender, ItemClickEventArgs e)
         {
 
+        }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DialogResult result = XtraMessageBox.Show("Uygulamayı kapatmak istediğinize emin misiniz?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.ExitThread();
+            }
+        }
+
+        
+        private void BtnBaglantiAyarlari_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FrmDatabaseSettings databaseSettings = new();
+            databaseSettings.ShowDialog();
         }
     }
 }

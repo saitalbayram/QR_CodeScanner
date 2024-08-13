@@ -104,6 +104,7 @@
             // BtnVeritabaniAyarlari
             // 
             BtnVeritabaniAyarlari.Caption = "Veritabanı İşlemleri";
+            BtnVeritabaniAyarlari.Enabled = false;
             BtnVeritabaniAyarlari.Id = 6;
             BtnVeritabaniAyarlari.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("BtnVeritabaniAyarlari.ImageOptions.SvgImage");
             BtnVeritabaniAyarlari.Name = "BtnVeritabaniAyarlari";
@@ -122,6 +123,7 @@
             BtnBaglantiAyarlari.Id = 8;
             BtnBaglantiAyarlari.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("BtnBaglantiAyarlari.ImageOptions.SvgImage");
             BtnBaglantiAyarlari.Name = "BtnBaglantiAyarlari";
+            BtnBaglantiAyarlari.ItemClick += BtnBaglantiAyarlari_ItemClick;
             // 
             // ribbonPage1
             // 
@@ -175,6 +177,7 @@
             StatusBar = ribbonStatusBar;
             Text = "Ana Sayfa";
             WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            FormClosed += FrmMain_FormClosed;
             ((System.ComponentModel.ISupportInitialize)ribbon).EndInit();
             ((System.ComponentModel.ISupportInitialize)xtraTabbedMdiManager1).EndInit();
             ResumeLayout(false);

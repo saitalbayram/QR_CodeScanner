@@ -9,5 +9,6 @@ namespace DataAccesLayer.Abstract
 {
     public interface IAppUserDal :IGenericDal<AppUser>
     {
+        public bool CheckUser(string userName, string password);
     }
 }

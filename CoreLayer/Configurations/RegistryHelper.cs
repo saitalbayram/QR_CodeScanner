@@ -27,8 +27,11 @@ namespace CoreLayer.Configurations
                 settings.UserName = key.GetValue("ServerUserName")?.ToString();
                 settings.Pass = key.GetValue("ServerPassword")?.ToString();
                 settings.Authentication = key.GetValue("ServerAuthentication")?.ToString();
+                return settings;
             }
-            return settings;
+            else
+                return null;
+           
         }
 
         public static void RegisterKayitYaz(RegistrySettings settings)

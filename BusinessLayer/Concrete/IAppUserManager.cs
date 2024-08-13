@@ -7,6 +7,12 @@ namespace BusinessLayer.Concrete
     public class IAppUserManager(IAppUserDal appUserDal) : IAppUserService
     {
         IAppUserDal _appUserDal = appUserDal;
+
+        public bool CheckUser(string userName, string password)
+        {
+            return _appUserDal.CheckUser(userName, password);
+        }
+
         public void TDelete(AppUser t)
         {
             _appUserDal.TDelete(t);
