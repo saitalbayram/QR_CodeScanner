@@ -45,7 +45,7 @@ namespace QR_CodeScanner.Settings
         private void barButtonItemEkle_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-
+            gridView1.OptionsBehavior.Editable = true;
         }
 
         private void barButtonItemDuzenle_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -54,6 +54,116 @@ namespace QR_CodeScanner.Settings
         }
 
         private void barButtonItemSil_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridView1.SetFocusedRowCellValue("SilinecekSatir", true);
+            int[] selectedRows = gridView1.GetSelectedRows();
+
+            foreach (int rowHandle in selectedRows)
+            {
+                if (gridView1.GetRow(rowHandle) is AppUser selectedRow)
+                {
+                    if (selectedRow.ID > 0)
+                    {
+                        selectedRow.IsDeleted = true;
+                        newRows.Add(selectedRow);
+                        gridView1.DeleteSelectedRows();
+                    }
+                    else
+                    {
+                        newRows.Remove(selectedRow);
+                        gridView1.DeleteSelectedRows();
+                    }
+                }
+            }
+        }
+
+        private void gridView1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var position = MousePosition;
+                popupMenu1.ShowPopup(position);
+            }
+        }
+
+        private HashSet<AppUser> newRows = new HashSet<AppUser>();
+
+
+        private void AddRowIfNotExists(AppUser row)
+        {
+            if (row != null && !newRows.Contains(row))
+            {
+                newRows.Add(row);
+            }
+        }
+
+        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            try
+            {
+                if (gridView1.GetRow(e.RowHandle) is AppUser row)
+                    AddRowIfNotExists(row);
+            }
+            catch (Exception hata)
+            {
+                XtraMessageBox.Show(hata.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+
+        private void gridView1_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        {
+            try
+            {
+                if (e.Row is AppUser updatedRow)
+                    AddRowIfNotExists(updatedRow);
+            }
+            catch (Exception hata)
+            {
+                XtraMessageBox.Show(hata.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void simpleButtonKaydet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (AppUser newRow in newRows)
+                {
+                    if (newRow != null)
+                    {
+                        if (newRow.ID <= 0) //veritabanında listedeki satır yoksa yeni ürün olarak kaydediyoruz
+                        {
+                            _appUserManager.TInsert(newRow);
+                        }
+                        else if (newRow.IsDeleted == true && newRow.ID > 0)
+                        {
+                            _appUserManager.TDelete(newRow);
+                        }
+                        else //veritabanına listedeki satır varsa ürünü güncelliyoruz
+                        {
+                            _appUserManager.TUpdate(newRow);
+
+                        }
+                    }
+                }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void simpleButtonVazgec_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void gridControl1_Click(object sender, EventArgs e)
         {
 
         }

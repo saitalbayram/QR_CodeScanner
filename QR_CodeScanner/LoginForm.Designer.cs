@@ -40,9 +40,11 @@
             labelControl4 = new DevExpress.XtraEditors.LabelControl();
             labelControl = new DevExpress.XtraEditors.LabelControl();
             splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(WaitForm1), true, true);
+            checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)textEditUserName.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textEditPass.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureEdit1.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)checkEdit1.Properties).BeginInit();
             SuspendLayout();
             // 
             // textEditUserName
@@ -81,7 +83,7 @@
             // BtnGiris
             // 
             BtnGiris.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("BtnGiris.ImageOptions.Image");
-            BtnGiris.Location = new System.Drawing.Point(432, 296);
+            BtnGiris.Location = new System.Drawing.Point(436, 314);
             BtnGiris.Name = "BtnGiris";
             BtnGiris.Size = new System.Drawing.Size(92, 34);
             BtnGiris.TabIndex = 4;
@@ -91,7 +93,7 @@
             // Btnİptal
             // 
             Btnİptal.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("Btnİptal.ImageOptions.SvgImage");
-            Btnİptal.Location = new System.Drawing.Point(334, 296);
+            Btnİptal.Location = new System.Drawing.Point(338, 314);
             Btnİptal.Name = "Btnİptal";
             Btnİptal.Size = new System.Drawing.Size(92, 34);
             Btnİptal.TabIndex = 5;
@@ -156,11 +158,20 @@
             // 
             splashScreenManager1.ClosingDelay = 500;
             // 
+            // checkEdit1
+            // 
+            checkEdit1.Location = new System.Drawing.Point(303, 288);
+            checkEdit1.Name = "checkEdit1";
+            checkEdit1.Properties.Caption = "Beni Hatırla";
+            checkEdit1.Size = new System.Drawing.Size(75, 20);
+            checkEdit1.TabIndex = 10;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(555, 391);
+            Controls.Add(checkEdit1);
             Controls.Add(labelControl);
             Controls.Add(labelControl4);
             Controls.Add(labelControl3);
@@ -178,11 +189,13 @@
             Name = "LoginForm";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "LoginForm";
+            Load += LoginForm_Load;
             Paint += LoginForm_Paint;
             Resize += LoginForm_Resize;
             ((System.ComponentModel.ISupportInitialize)textEditUserName.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)textEditPass.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureEdit1.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)checkEdit1.Properties).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -200,5 +213,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraEditors.CheckEdit checkEdit1;
     }
 }

@@ -13,5 +13,7 @@ namespace CoreLayer.Concrete
         public string? UserName { get; set; }
         public string? Pass { get; set; }
         public string? Authentication { get; set; }
+        public string? KullaniciAdi { get; set; }
+        public string? Sifre { get; set; }
     }
 }

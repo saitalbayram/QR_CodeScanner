@@ -16,6 +16,7 @@ using DataAccesLayer.Entity;
 using QR_CodeScanner.Main;
 using System.Reflection;
 using System.Threading;
+using CoreLayer.Configurations;
 
 namespace QR_CodeScanner
 {
@@ -113,6 +114,16 @@ namespace QR_CodeScanner
             splashScreenManager1.ShowWaitForm();
             if (_appUserManager.CheckUser(textEditUserName.Text, textEditPass.Text))
             {
+                if (checkEdit1.Checked)
+                {
+                    RegistryHelper.SET("KullaniciAdi", textEditUserName.Text);
+                    RegistryHelper.SET("Sifre", textEditPass.Text);
+                }
+                else
+                {
+                    RegistryHelper.DELETE("KullaniciAdi");
+                    RegistryHelper.DELETE("Sifre");
+                }
                 Task.Run(() => PreloadAssemblies());
                 FrmMain frmMain = new();
                 frmMain.Show();
@@ -168,9 +179,19 @@ namespace QR_CodeScanner
 
         private void textEditPass_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 Giris();
+            }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            textEditUserName.Text = RegistryHelper.GET("KullaniciAdi");
+            textEditPass.Text = RegistryHelper.GET("Sifre");
+            if (!string.IsNullOrEmpty(textEditUserName.Text) && !string.IsNullOrEmpty(textEditPass.Text))
+            {
+                checkEdit1.Checked = true;
             }
         }
     }

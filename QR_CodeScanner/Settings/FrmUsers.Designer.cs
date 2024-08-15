@@ -49,6 +49,9 @@
             barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            simpleButtonVazgec = new DevExpress.XtraEditors.SimpleButton();
+            simpleButtonKaydet = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)appUserBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
@@ -57,6 +60,8 @@
             panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)popupMenu1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)barManager1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)panelControl2).BeginInit();
+            panelControl2.SuspendLayout();
             SuspendLayout();
             // 
             // appUserBindingSource
@@ -71,9 +76,10 @@
             gridControl1.MainView = gridView1;
             gridControl1.Name = "gridControl1";
             gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemTextEditPass });
-            gridControl1.Size = new System.Drawing.Size(770, 501);
+            gridControl1.Size = new System.Drawing.Size(770, 471);
             gridControl1.TabIndex = 1;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
+            gridControl1.Click += gridControl1_Click;
             // 
             // gridView1
             // 
@@ -81,6 +87,9 @@
             gridView1.GridControl = gridControl1;
             gridView1.Name = "gridView1";
             gridView1.OptionsBehavior.Editable = false;
+            gridView1.CellValueChanged += gridView1_CellValueChanged;
+            gridView1.RowUpdated += gridView1_RowUpdated;
+            gridView1.MouseDown += gridView1_MouseDown;
             // 
             // colID
             // 
@@ -206,7 +215,7 @@
             // 
             barDockControlBottom.CausesValidation = false;
             barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            barDockControlBottom.Location = new System.Drawing.Point(0, 587);
+            barDockControlBottom.Location = new System.Drawing.Point(0, 593);
             barDockControlBottom.Manager = barManager1;
             barDockControlBottom.Size = new System.Drawing.Size(770, 0);
             // 
@@ -216,7 +225,7 @@
             barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             barDockControlLeft.Manager = barManager1;
-            barDockControlLeft.Size = new System.Drawing.Size(0, 587);
+            barDockControlLeft.Size = new System.Drawing.Size(0, 593);
             // 
             // barDockControlRight
             // 
@@ -224,14 +233,45 @@
             barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             barDockControlRight.Location = new System.Drawing.Point(770, 0);
             barDockControlRight.Manager = barManager1;
-            barDockControlRight.Size = new System.Drawing.Size(0, 587);
+            barDockControlRight.Size = new System.Drawing.Size(0, 593);
+            // 
+            // panelControl2
+            // 
+            panelControl2.Controls.Add(simpleButtonVazgec);
+            panelControl2.Controls.Add(simpleButtonKaydet);
+            panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panelControl2.Location = new System.Drawing.Point(0, 557);
+            panelControl2.Name = "panelControl2";
+            panelControl2.Size = new System.Drawing.Size(770, 36);
+            panelControl2.TabIndex = 6;
+            // 
+            // simpleButtonVazgec
+            // 
+            simpleButtonVazgec.Dock = System.Windows.Forms.DockStyle.Right;
+            simpleButtonVazgec.Location = new System.Drawing.Point(618, 2);
+            simpleButtonVazgec.Name = "simpleButtonVazgec";
+            simpleButtonVazgec.Size = new System.Drawing.Size(75, 32);
+            simpleButtonVazgec.TabIndex = 1;
+            simpleButtonVazgec.Text = "Vazgeç";
+            simpleButtonVazgec.Click += simpleButtonVazgec_Click;
+            // 
+            // simpleButtonKaydet
+            // 
+            simpleButtonKaydet.Dock = System.Windows.Forms.DockStyle.Right;
+            simpleButtonKaydet.Location = new System.Drawing.Point(693, 2);
+            simpleButtonKaydet.Name = "simpleButtonKaydet";
+            simpleButtonKaydet.Size = new System.Drawing.Size(75, 32);
+            simpleButtonKaydet.TabIndex = 0;
+            simpleButtonKaydet.Text = "Kaydet";
+            simpleButtonKaydet.Click += simpleButtonKaydet_Click;
             // 
             // FrmUsers
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(770, 587);
+            ClientSize = new System.Drawing.Size(770, 593);
             Controls.Add(gridControl1);
+            Controls.Add(panelControl2);
             Controls.Add(panelControl1);
             Controls.Add(barDockControlLeft);
             Controls.Add(barDockControlRight);
@@ -248,6 +288,8 @@
             panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)popupMenu1).EndInit();
             ((System.ComponentModel.ISupportInitialize)barManager1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)panelControl2).EndInit();
+            panelControl2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -273,5 +315,8 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonVazgec;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonKaydet;
     }
 }

@@ -121,7 +121,7 @@ namespace QR_CodeScanner
             }
             catch (Exception ex)
             {
-                //XtraMessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -133,37 +133,45 @@ namespace QR_CodeScanner
 
         private void SaveToDatabase()
         {
-            PosetPaket posetPaket = null;
-            if (gridControl1.DataSource is System.Data.DataTable dataTable)
+            try
             {
-                List<PosetPaket> posetPakets = new List<PosetPaket>();
-                foreach (DataRow row in dataTable.Rows)
+                PosetPaket posetPaket = null;
+                if (gridControl1.DataSource is System.Data.DataTable dataTable)
                 {
-                    posetPaket = new()
+                    List<PosetPaket> posetPakets = new List<PosetPaket>();
+                    foreach (DataRow row in dataTable.Rows)
                     {
-                        PosetBarkod = row["PosetBarkod"].ToString(),
-                        PaketBarkod = row["PaketBarkod"].ToString(),
-                        CreatedDate = Convert.ToDateTime(row["CreatedDate"])
-                    };
+                        posetPaket = new()
+                        {
+                            PosetBarkod = row["PosetBarkod"].ToString(),
+                            PaketBarkod = row["PaketBarkod"].ToString(),
+                            CreatedDate = Convert.ToDateTime(row["CreatedDate"])
+                        };
 
-                    posetPakets.Add(posetPaket);
+                        posetPakets.Add(posetPaket);
 
-                }
-
-                if (posetPakets.Count > 0)
-                {
-                    foreach (var item in posetPakets)
-                    {
-                        _posetPaketManager.TInsert(item);
                     }
-                    appSettings.PrintDocument("Etiket", "QR Code", posetPaket.PaketBarkod.ToString());
-                }
-                else
-                {
-                    XtraMessageBox.Show("Lütfen önce poşet barkodlarını okutun!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
 
+                    if (posetPakets.Count > 0)
+                    {
+                        foreach (var item in posetPakets)
+                        {
+                            _posetPaketManager.TInsert(item);
+                        }
+                        appSettings.PrintDocument("Etiket", "QR Code", posetPaket.PaketBarkod.ToString());
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Lütfen önce poşet barkodlarını okutun!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
             }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Hata: "+ ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
 
 
         }
@@ -189,8 +197,15 @@ namespace QR_CodeScanner
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             var pack = _posetPaketManager.GetPackFromMaxId();
+            if(pack != null)
+            {
+                appSettings.PrintDocument("Etiket", "QR Code", pack.PaketBarkod);
+            }
+            else
+            {
+                XtraMessageBox.Show("Kayıtlı barkod bulunamadı", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            appSettings.PrintDocument("Etiket", "QR Code", pack.PaketBarkod);
         }
     }
 }

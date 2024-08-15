@@ -15,6 +15,39 @@ namespace CoreLayer.Configurations
 
         }
 
+        public static string GET(string keyname, string defaultValue = "")
+        {
+            using (RegistryKey reg = Registry.CurrentUser.OpenSubKey("Software\\" + Application.ProductName))
+            {
+                if (reg == null || reg.GetValue(keyname) == null)
+                {
+                    SET(keyname, defaultValue);
+                    return GET(keyname);
+                }
+                else
+                    return reg.GetValue(keyname) + "";
+            }
+        }
+        public static void SET(string keyname, string keyvalue)
+        {
+            using (RegistryKey reg = Registry.CurrentUser.CreateSubKey("Software\\" + Application.ProductName))
+            {
+                reg.SetValue(keyname, keyvalue);
+            }
+        }
+        public static void DELETE(string keyName = "")
+        {
+            try
+            {
+                using RegistryKey reg = Registry.CurrentUser.OpenSubKey("Software\\" + Application.ProductName, writable: true);
+                if (reg != null && reg.GetValue(keyName) != null)
+                {
+                    reg.DeleteValue(keyName);
+                }
+
+            }
+            catch { }
+        }
         public static RegistrySettings RegisterKayitOku()
         {
             string subKey = @"SOFTWARE\QRCodeScanner";
@@ -40,11 +73,13 @@ namespace CoreLayer.Configurations
             string subKey = @"SOFTWARE\QRCodeScanner";
             var keyValues = new (string keyName, string? keyValue)[]
             {
-                ("Server", settings.ServerName),
-                ("Database", settings.Database),
-                ("ServerUserName", settings.UserName),
-                ("ServerPassword", settings.Pass),
-                ("ServerAuthentication", settings.Authentication),
+                ("Server", settings?.ServerName),
+                ("Database", settings?.Database),
+                ("ServerUserName", settings ?.UserName),
+                ("ServerPassword", settings ?.Pass),
+                ("ServerAuthentication", settings ?.Authentication),
+                ("KullaniciAdi" ,settings?.KullaniciAdi),
+                ("Sifre", settings?.Sifre)
             };
 
             // RegistryKey nesnesi açma
