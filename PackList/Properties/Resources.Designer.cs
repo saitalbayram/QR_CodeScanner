@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QR_CodeScanner.Properties {
+namespace PackList.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace QR_CodeScanner.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("QR_CodeScanner.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PackList.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -156,6 +156,16 @@ namespace QR_CodeScanner.Properties {
         public static DevExpress.Utils.Svg.SvgImage editnames3 {
             get {
                 object obj = ResourceManager.GetObject("editnames3", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   DevExpress.Utils.Svg.SvgImage türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        public static DevExpress.Utils.Svg.SvgImage editnames4 {
+            get {
+                object obj = ResourceManager.GetObject("editnames4", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }

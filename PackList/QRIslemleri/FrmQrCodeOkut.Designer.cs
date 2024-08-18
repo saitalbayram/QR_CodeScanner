@@ -37,7 +37,6 @@
             labelControl1 = new DevExpress.XtraEditors.LabelControl();
             textEditPaketBarkod = new DevExpress.XtraEditors.TextEdit();
             textEditPosetBarkod = new DevExpress.XtraEditors.TextEdit();
-            listBoxControl1 = new DevExpress.Utils.Html.HtmlTemplateCollection();
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             posetPaketBindingSource = new System.Windows.Forms.BindingSource(components);
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -54,6 +53,7 @@
             barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)panelControl1).BeginInit();
             panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)textEditPaketBarkod.Properties).BeginInit();
@@ -139,7 +139,7 @@
             gridControl1.Location = new System.Drawing.Point(0, 89);
             gridControl1.MainView = gridView1;
             gridControl1.Name = "gridControl1";
-            gridControl1.Size = new System.Drawing.Size(783, 431);
+            gridControl1.Size = new System.Drawing.Size(783, 435);
             gridControl1.TabIndex = 2;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             gridControl1.MouseDown += gridControl1_MouseDown;
@@ -209,7 +209,7 @@
             // 
             barButtonItemDuzenle.Caption = "Düzenle";
             barButtonItemDuzenle.Id = 0;
-            barButtonItemDuzenle.ImageOptions.SvgImage = Properties.Resources.editnames;
+            barButtonItemDuzenle.ImageOptions.SvgImage = PackList.Properties.Resources.editnames4;
             barButtonItemDuzenle.Name = "barButtonItemDuzenle";
             barButtonItemDuzenle.ItemClick += barButtonItemDuzenle_ItemClick;
             // 
@@ -217,7 +217,7 @@
             // 
             barButtonItemSil.Caption = "Çıkar";
             barButtonItemSil.Id = 1;
-            barButtonItemSil.ImageOptions.SvgImage = Properties.Resources.delete;
+            barButtonItemSil.ImageOptions.SvgImage = PackList.Properties.Resources.editnames4;
             barButtonItemSil.Name = "barButtonItemSil";
             // 
             // barManager1
@@ -242,7 +242,7 @@
             // 
             barDockControlBottom.CausesValidation = false;
             barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            barDockControlBottom.Location = new System.Drawing.Point(0, 520);
+            barDockControlBottom.Location = new System.Drawing.Point(0, 524);
             barDockControlBottom.Manager = barManager1;
             barDockControlBottom.Size = new System.Drawing.Size(783, 0);
             // 
@@ -252,7 +252,7 @@
             barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             barDockControlLeft.Manager = barManager1;
-            barDockControlLeft.Size = new System.Drawing.Size(0, 520);
+            barDockControlLeft.Size = new System.Drawing.Size(0, 524);
             // 
             // barDockControlRight
             // 
@@ -260,13 +260,17 @@
             barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             barDockControlRight.Location = new System.Drawing.Point(783, 0);
             barDockControlRight.Manager = barManager1;
-            barDockControlRight.Size = new System.Drawing.Size(0, 520);
+            barDockControlRight.Size = new System.Drawing.Size(0, 524);
+            // 
+            // splashScreenManager1
+            // 
+            splashScreenManager1.ClosingDelay = 500;
             // 
             // FrmQrCodeOkut
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(783, 520);
+            ClientSize = new System.Drawing.Size(783, 524);
             Controls.Add(gridControl1);
             Controls.Add(panelControl1);
             Controls.Add(barDockControlLeft);
@@ -297,7 +301,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit textEditPaketBarkod;
-        private DevExpress.Utils.Html.HtmlTemplateCollection listBoxControl1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraBars.PopupMenu popupMenuGrid;
@@ -315,5 +318,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedDate;
         private DevExpress.XtraGrid.Columns.GridColumn colUserID;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

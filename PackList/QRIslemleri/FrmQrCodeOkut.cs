@@ -1,18 +1,11 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer.Concrete;
 using EntityLayer.Concrete;
-using DevExpress.DataAccess.Native.Data;
 using DataAccesLayer.Entity;
-using Microsoft.EntityFrameworkCore;
 
 namespace QR_CodeScanner
 {
@@ -62,6 +55,7 @@ namespace QR_CodeScanner
             table.Columns.Add("PosetBarkod", typeof(string));
             table.Columns.Add("PaketBarkod", typeof(string));
             table.Columns.Add("CreatedDate", typeof(DateTime));
+            table.Columns.Add("UserID", typeof(int));
             gridControl1.DataSource = table;
         }
 
@@ -97,7 +91,7 @@ namespace QR_CodeScanner
 
                 if (!string.IsNullOrEmpty(paketBarkod))
                 {
-
+                    splashScreenManager1.ShowWaitForm();
                     if (gridControl1.DataSource is System.Data.DataTable dataTable)
                     {
                         foreach (DataRow row in dataTable.Rows)
@@ -110,8 +104,8 @@ namespace QR_CodeScanner
                     }
                     SaveToDatabase();
                     ClearGridView();
-                    textEditPosetBarkod.Focus();
-
+                    splashScreenManager1.CloseWaitForm();
+                    textEditPosetBarkod.Focus();                  
 
                 }
                 else
@@ -130,26 +124,26 @@ namespace QR_CodeScanner
             Kaydet();
 
         }
-
+        PosetPaket posetPaket;
+        List<PosetPaket> posetPakets = [];
         private void SaveToDatabase()
         {
             try
-            {
-                PosetPaket posetPaket = null;
+            {               
                 if (gridControl1.DataSource is System.Data.DataTable dataTable)
                 {
-                    List<PosetPaket> posetPakets = new List<PosetPaket>();
+                    
                     foreach (DataRow row in dataTable.Rows)
                     {
                         posetPaket = new()
                         {
                             PosetBarkod = row["PosetBarkod"].ToString(),
                             PaketBarkod = row["PaketBarkod"].ToString(),
-                            CreatedDate = Convert.ToDateTime(row["CreatedDate"])
+                            CreatedDate = Convert.ToDateTime(row["CreatedDate"]),
+                            UserID = Convert.ToInt32(appSettings.UserID)
                         };
 
                         posetPakets.Add(posetPaket);
-
                     }
 
                     if (posetPakets.Count > 0)

@@ -3,14 +3,6 @@ using DevExpress.XtraEditors;
 using OnMuhasebe.Settings;
 using QR_CodeScanner.QRIslemleri;
 using QR_CodeScanner.Settings;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QR_CodeScanner.Main
@@ -85,7 +77,7 @@ namespace QR_CodeScanner.Main
         FrmUsers frmUsers;
         private void BtnKullanicilar_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if(frmUsers == null || frmUsers.IsDisposed)
+            if (frmUsers == null || frmUsers.IsDisposed)
             {
                 frmUsers = new FrmUsers();
                 frmUsers.MdiParent = this;
@@ -104,18 +96,29 @@ namespace QR_CodeScanner.Main
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+           
+        }
+
+
+        private void BtnBaglantiAyarlari_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FrmDatabaseSettings databaseSettings = new();
+            databaseSettings.ShowDialog();
+        }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
             DialogResult result = XtraMessageBox.Show("Uygulamayı kapatmak istediğinize emin misiniz?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 Application.ExitThread();
             }
-        }
-
-        
-        private void BtnBaglantiAyarlari_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            FrmDatabaseSettings databaseSettings = new();
-            databaseSettings.ShowDialog();
+            else
+            {
+                e.Cancel = true;
+            }
+            
+           
         }
     }
 }

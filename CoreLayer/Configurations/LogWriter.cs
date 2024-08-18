@@ -1,5 +1,4 @@
-﻿using DevExpress.LookAndFeel.Design;
-using System;
+﻿using System;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Forms;

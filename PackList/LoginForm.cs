@@ -1,21 +1,16 @@
 ﻿using DevExpress.XtraEditors;
-using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DataAccesLayer.Concrete;
 using BusinessLayer.Concrete;
 using DataAccesLayer.Entity;
 using QR_CodeScanner.Main;
 using System.Reflection;
-using System.Threading;
 using CoreLayer.Configurations;
 
 namespace QR_CodeScanner
@@ -127,6 +122,7 @@ namespace QR_CodeScanner
                 Task.Run(() => PreloadAssemblies());
                 FrmMain frmMain = new();
                 frmMain.Show();
+                appSettings.UserID = _appUserManager.GetUserID(textEditUserName.Text);
                 this.Hide();
             }
             else

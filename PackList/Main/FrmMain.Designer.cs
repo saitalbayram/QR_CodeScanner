@@ -72,7 +72,7 @@
             // 
             BtnQrIslemleri.Caption = "QR İşlemleri";
             BtnQrIslemleri.Id = 2;
-            BtnQrIslemleri.ImageOptions.SvgImage = Properties.Resources.editnames;
+            BtnQrIslemleri.ImageOptions.SvgImage = PackList.Properties.Resources.editnames4;
             BtnQrIslemleri.Name = "BtnQrIslemleri";
             BtnQrIslemleri.ItemClick += BtnQrIslemleri_ItemClick;
             // 
@@ -177,6 +177,7 @@
             StatusBar = ribbonStatusBar;
             Text = "Ana Sayfa";
             WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            FormClosing += FrmMain_FormClosing;
             FormClosed += FrmMain_FormClosed;
             ((System.ComponentModel.ISupportInitialize)ribbon).EndInit();
             ((System.ComponentModel.ISupportInitialize)xtraTabbedMdiManager1).EndInit();

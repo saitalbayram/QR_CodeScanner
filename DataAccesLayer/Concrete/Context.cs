@@ -40,8 +40,22 @@ namespace DataAccesLayer.Concrete
             }
         }
 
-        public DbSet<PosetPaket>? PosetPakets {  get; set; }
+        public DbSet<PosetPaket>? PosetPakets { get; set; }
         public DbSet<AppUser>? Users { get; set; }
         public DbSet<Files>? Files { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<PosetPaket>(entity =>
+            {
+                entity.HasOne(p => p.Users)
+                    .WithMany(w => w.Users)
+                    .HasForeignKey(p => p.UserID)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+            });
+        }
     }
 }

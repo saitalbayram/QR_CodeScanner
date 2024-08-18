@@ -173,7 +173,7 @@
             // 
             barButtonItemEkle.Caption = "Yeni Ekle";
             barButtonItemEkle.Id = 0;
-            barButtonItemEkle.ImageOptions.SvgImage = Properties.Resources.snapinsertheader;
+            barButtonItemEkle.ImageOptions.SvgImage = PackList.Properties.Resources.editnames4;
             barButtonItemEkle.Name = "barButtonItemEkle";
             barButtonItemEkle.ItemClick += barButtonItemEkle_ItemClick;
             // 
@@ -181,7 +181,7 @@
             // 
             barButtonItemDuzenle.Caption = "Düzenle";
             barButtonItemDuzenle.Id = 1;
-            barButtonItemDuzenle.ImageOptions.SvgImage = Properties.Resources.editnames3;
+            barButtonItemDuzenle.ImageOptions.SvgImage = PackList.Properties.Resources.editnames4;
             barButtonItemDuzenle.Name = "barButtonItemDuzenle";
             barButtonItemDuzenle.ItemClick += barButtonItemDuzenle_ItemClick;
             // 
@@ -189,7 +189,7 @@
             // 
             barButtonItemSil.Caption = "Sil";
             barButtonItemSil.Id = 2;
-            barButtonItemSil.ImageOptions.SvgImage = Properties.Resources.delete1;
+            barButtonItemSil.ImageOptions.SvgImage = PackList.Properties.Resources.editnames4;
             barButtonItemSil.Name = "barButtonItemSil";
             barButtonItemSil.ItemClick += barButtonItemSil_ItemClick;
             // 

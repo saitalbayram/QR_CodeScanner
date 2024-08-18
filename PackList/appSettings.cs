@@ -29,11 +29,19 @@ namespace QR_CodeScanner
 {
     public class appSettings
     {
+        public static IFilesManager _filesManager;
+
+     
         public static string ShowInputBox(string uyariMetni, string  baslik, string defaultValue)
         { return Microsoft.VisualBasic.Interaction.InputBox(uyariMetni, baslik, defaultValue); }
 
         static DevExpress.DataAccess.Sql.SqlDataSource _defaultDataSource;
         public static DevExpress.DataAccess.Sql.SqlDataSource defaultDataSource;
+
+        public appSettings()
+        {
+            _filesManager = new(new EfFilesDal());
+        }
 
         //{
         //    get
@@ -53,16 +61,20 @@ namespace QR_CodeScanner
         //    }
         // }
 
-
+        public static int UserID
+        {
+            get;
+            set;
+        }
         public static void PrintDocument(string moduleName = "", string fileName = "", string parameters = "")
         {
             try
             {
                 // LogWriter.LogYaz(KayitID + " nolu barkod yazdırılıyor.. Report ID=" + ReportID, LogWriter.renk.sari);
 
-                IFilesManager filesManager = new(new EfFilesDal());
+                 
 
-                var fileBytes = filesManager.GetFileFromNameAndModule(fileName, moduleName);
+                var fileBytes = _filesManager.GetFileFromNameAndModule(fileName, moduleName);
                 if (fileBytes != null)
                 {
                     using var stream = new System.IO.MemoryStream(fileBytes, true);

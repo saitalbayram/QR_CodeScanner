@@ -205,6 +205,8 @@
             xrDesignBarManager1.TransparentEditorsMode = DevExpress.Utils.DefaultBoolean.True;
             xrDesignBarManager1.Updates.AddRange(new string[] { "Toolbox" });
             xrDesignBarManager1.ZoomItem = bbiZoom;
+            this.reportDesigner1.DesignPanelLoaded += new DevExpress.XtraReports.UserDesigner.DesignerLoadedEventHandler(this.reportDesigner1_DesignPanelLoaded);
+
             // 
             // designBar1
             // 
@@ -1319,5 +1321,6 @@
         private DevExpress.XtraReports.UserDesigner.DesignControlContainer propertyGridDockPanel1_Container;
         private DevExpress.XtraReports.UserDesigner.ReportGalleryDockPanel reportGalleryDockPanel1;
         private DevExpress.XtraReports.UserDesigner.DesignControlContainer reportGalleryDockPanel1_Container;
+
     }
 }

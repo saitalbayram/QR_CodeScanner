@@ -14,5 +14,6 @@ namespace EntityLayer.Concrete
         public string? UserName { get; set; }
         public string? Password { get; set; }
         public bool? IsDeleted { get; set; }
+        public ICollection<PosetPaket>? Users { get; set; }
     }
 }

@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QR_CodeScanner", "QR_CodeScanner\QR_CodeScanner.csproj", "{585F0E3C-83FC-47D5-B779-35AD1FFC21A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackList", "PackList\PackList.csproj", "{585F0E3C-83FC-47D5-B779-35AD1FFC21A2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{25A2997F-2645-4522-B508-2071A7D9CA4C} = {25A2997F-2645-4522-B508-2071A7D9CA4C}
 		{369268C9-21CB-4CCB-B90E-0B80A227FC72} = {369268C9-21CB-4CCB-B90E-0B80A227FC72}

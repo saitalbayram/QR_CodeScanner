@@ -13,6 +13,11 @@ namespace BusinessLayer.Concrete
             return _appUserDal.CheckUser(userName, password);
         }
 
+        public int GetUserID(string userName)
+        {
+            return _appUserDal.GetUserID(userName);
+        }
+
         public void TDelete(AppUser t)
         {
             _appUserDal.TDelete(t);

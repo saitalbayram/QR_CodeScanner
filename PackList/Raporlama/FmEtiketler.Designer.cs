@@ -34,6 +34,7 @@
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             colID = new DevExpress.XtraGrid.Columns.GridColumn();
             colFileName = new DevExpress.XtraGrid.Columns.GridColumn();
+            colModuleName = new DevExpress.XtraGrid.Columns.GridColumn();
             colReportFile = new DevExpress.XtraGrid.Columns.GridColumn();
             popupMenu1 = new DevExpress.XtraBars.PopupMenu(components);
             barButtonItemEkle = new DevExpress.XtraBars.BarButtonItem();
@@ -45,7 +46,6 @@
             barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             posetPaketBindingSource = new System.Windows.Forms.BindingSource(components);
-            colModuleName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)filesBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
@@ -94,6 +94,14 @@
             colFileName.VisibleIndex = 2;
             colFileName.Width = 297;
             // 
+            // colModuleName
+            // 
+            colModuleName.Caption = "Modül Adı";
+            colModuleName.FieldName = "ModuleName";
+            colModuleName.Name = "colModuleName";
+            colModuleName.Visible = true;
+            colModuleName.VisibleIndex = 1;
+            // 
             // colReportFile
             // 
             colReportFile.FieldName = "ReportFile";
@@ -124,6 +132,7 @@
             barButtonItemSil.Caption = "Sil";
             barButtonItemSil.Id = 2;
             barButtonItemSil.Name = "barButtonItemSil";
+            barButtonItemSil.ItemClick += barButtonItemSil_ItemClick;
             // 
             // barManager1
             // 
@@ -170,14 +179,6 @@
             // posetPaketBindingSource
             // 
             posetPaketBindingSource.DataSource = typeof(EntityLayer.Concrete.PosetPaket);
-            // 
-            // colModuleName
-            // 
-            colModuleName.Caption = "Modül Adı";
-            colModuleName.FieldName = "ModuleName";
-            colModuleName.Name = "colModuleName";
-            colModuleName.Visible = true;
-            colModuleName.VisibleIndex = 1;
             // 
             // FmEtiketler
             // 

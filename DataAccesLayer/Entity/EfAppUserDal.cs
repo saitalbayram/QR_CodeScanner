@@ -18,5 +18,11 @@ namespace DataAccesLayer.Entity
             var user = c.Users.SingleOrDefault(x => x.UserName == userName && x.Password == password);
             return user != null;
         }
+
+        public int GetUserID(string userName)
+        {
+            using var c = new Context();
+            return c.Users.Where(x=> x.UserName == userName).Select(x => x.ID).FirstOrDefault();   
+        }
     }
 }

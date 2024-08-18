@@ -182,7 +182,7 @@
             Controls.Add(labelControl1);
             Controls.Add(textEditPass);
             Controls.Add(textEditUserName);
-            FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
+            FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             LookAndFeel.SkinName = "WXI";
             LookAndFeel.UseDefaultLookAndFeel = false;

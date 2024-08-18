@@ -1,19 +1,10 @@
 ﻿using BusinessLayer.Concrete;
-using CoreLayer.Concrete;
-using CoreLayer.Configurations;
 using DataAccesLayer.Entity;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
-using EntityLayer.Concrete;
+using DevExpress.XtraReports.UserDesigner;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QR_CodeScanner
@@ -51,12 +42,8 @@ namespace QR_CodeScanner
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            
+            }            
         }
-
-
 
         private void bbiSaveFile_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -75,6 +62,34 @@ namespace QR_CodeScanner
                 XtraMessageBox.Show(ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
       
+        }
+
+
+        private void reportDesigner1_DesignPanelLoaded(object sender, DesignerLoadedEventArgs e)
+        {
+            XRDesignPanel panel = (XRDesignPanel)sender;
+            panel.AddCommandHandler(new SaveCommandHandler(panel));
+        }
+    }
+
+
+    public class SaveCommandHandler : DevExpress.XtraReports.UserDesigner.ICommandHandler
+    {
+        XRDesignPanel panel;
+        public SaveCommandHandler(XRDesignPanel panel)
+        {
+            this.panel = panel;
+        }
+
+        public void HandleCommand(DevExpress.XtraReports.UserDesigner.ReportCommand command, object[] args)
+        {
+            panel.ReportState = ReportState.Saved;
+        }
+
+        public bool CanHandleCommand(DevExpress.XtraReports.UserDesigner.ReportCommand command, ref bool useNextHandler)
+        {
+            useNextHandler = !(command == ReportCommand.SaveFile || command == ReportCommand.SaveFileAs);
+            return !useNextHandler;
         }
     }
 }

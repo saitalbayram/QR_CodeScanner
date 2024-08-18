@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using BusinessLayer.Concrete;
 using DataAccesLayer.Entity;
 using DevExpress.XtraEditors;
 using EntityLayer.Concrete;
+using QR_CodeScanner.Main;
 
 namespace QR_CodeScanner.QRIslemleri
 {
@@ -44,15 +46,22 @@ namespace QR_CodeScanner.QRIslemleri
         FrmQrCodeOkut codeOkut;
         private void barButtonItemYeniKodOkut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (codeOkut == null || codeOkut.IsDisposed)
+            if (this.MdiParent is FrmMain anaSayfa)
             {
-                codeOkut = new FrmQrCodeOkut();
-                codeOkut.MdiParent = this;
-                codeOkut.Show();
-            }
-            else
-            {
-                codeOkut.Activate();
+
+                FrmQrCodeOkut satisSiparisi;
+
+                if (anaSayfa.MdiChildren.Any(f => f is FrmQrCodeOkut))
+                {
+                    satisSiparisi = (FrmQrCodeOkut)anaSayfa.MdiChildren.First(f => f is FrmQrCodeOkut);
+                }
+                else
+                {
+                    satisSiparisi = new FrmQrCodeOkut() { MdiParent = anaSayfa };
+                    satisSiparisi.Show(); // Formu göster
+                }
+
+                satisSiparisi.Activate();
             }
         }
 
@@ -97,30 +106,7 @@ namespace QR_CodeScanner.QRIslemleri
                 XtraMessageBox.Show(hata.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void RemoveRow(PosetPaket row)
-        {
-            if (row != null && newRows.Contains(row))
-            {
-
-                newRows.Remove(row);
-
-                // GridView'den satırı kaldırmak için
-                var dataSource = gridControl1.DataSource as BindingList<PosetPaket>;
-                if (dataSource != null)
-                {
-                    dataSource.Remove(row);
-                }
-                else
-                {
-                    // Alternatif veri kaynağı işlemleri
-                    int rowHandle = gridView1.FindRow(row);
-                    if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
-                    {
-                        gridView1.DeleteRow(rowHandle);
-                    }
-                }
-            }
-        }
+   
 
         private void simpleButtonKaydet_Click(object sender, EventArgs e)
         {
@@ -163,7 +149,7 @@ namespace QR_CodeScanner.QRIslemleri
 
         private void barButtonItemSil_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            gridView1.SetFocusedRowCellValue("SilinecekSatir", true);
+            
             int[] selectedRows = gridView1.GetSelectedRows();
 
             foreach (int rowHandle in selectedRows)
@@ -171,9 +157,11 @@ namespace QR_CodeScanner.QRIslemleri
                 if (gridView1.GetRow(rowHandle) is PosetPaket selectedRow)
                 {
                     // Sadece ID'si 0 olan satırı kaldır
-                    if (selectedRow.ID <= 0)
+                    if (selectedRow.ID > 0)
                     {
-                        RemoveRow(selectedRow);
+                        selectedRow.SilinecekSatir = true;
+                        newRows.Add(selectedRow);
+                        gridView1.DeleteSelectedRows();
                     }
                     else
                     {

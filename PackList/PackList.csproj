@@ -64,4 +64,7 @@
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 	  <Exec Command="d:&#xD;&#xA;cd  C:\Users\Sait Albayram\source\repos\QR_CodeScanner\QR_CodeScanner\Properties&#xD;&#xA;del licenses.licx&#xD;&#xA;copy NUL licenses.licx" />
 	</Target>
+
+  
+
 </Project>
