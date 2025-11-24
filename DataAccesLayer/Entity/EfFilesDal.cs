@@ -16,7 +16,10 @@ namespace DataAccesLayer.Entity
         {
             using var c = new Context();
 
-            return [.. c.Files.Where(x => x.FileName == fileName && x.ModuleName == ModuleName).Select(x => x.ReportFile).FirstOrDefault()];
+            var file = c.Files?.Where(x => x.FileName == fileName && x.ModuleName == ModuleName).Select(x => x.ReportFile).FirstOrDefault();
+            if (file == null)
+                return Array.Empty<byte>();
+            return file;
         }
     }
 }

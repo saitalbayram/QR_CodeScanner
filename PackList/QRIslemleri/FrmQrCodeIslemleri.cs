@@ -67,8 +67,9 @@ namespace QR_CodeScanner.QRIslemleri
 
         private void barButtonItemTekrarYazdir_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string paketBarcode = gridView1.GetFocusedRowCellValue("PaketBarkod").ToString();
-            appSettings.PrintDocument("Etiket", "QR Code", paketBarcode);
+            var paketBarcode = gridView1.GetFocusedRowCellValue("PaketBarkod");
+            appSettings appSettings = new appSettings();
+            appSettings.PrintDocument("Etiket", "QR Code", paketBarcode.ToString());
         }
 
         private void gridView1_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)

@@ -1,27 +1,9 @@
-﻿using DevExpress.XtraCharts.Native;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CoreLayer.Concrete;
-using CoreLayer.Configurations;
-using DevExpress.Utils.Registrator;
+﻿using System;
 using BusinessLayer.Concrete;
-using DataAccesLayer.Concrete;
 using DataAccesLayer.Entity;
-using System.Drawing.Printing;
 using System.IO;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
 using System.Windows.Forms;
-using System.Drawing;
 using DevExpress.XtraReports.UI;
-using DevExpress.XtraReports.Wizards;
-using static iText.IO.Image.Jpeg2000ImageData;
-using System.Data;
-using System.Threading;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 
@@ -66,7 +48,7 @@ namespace QR_CodeScanner
             get;
             set;
         }
-        public static void PrintDocument(string moduleName = "", string fileName = "", string parameters = "")
+        public void PrintDocument(string moduleName = "", string fileName = "", string parameters = "")
         {
             try
             {

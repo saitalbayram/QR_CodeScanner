@@ -139,7 +139,7 @@
             gridControl1.Location = new System.Drawing.Point(0, 89);
             gridControl1.MainView = gridView1;
             gridControl1.Name = "gridControl1";
-            gridControl1.Size = new System.Drawing.Size(783, 435);
+            gridControl1.Size = new System.Drawing.Size(783, 437);
             gridControl1.TabIndex = 2;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             gridControl1.MouseDown += gridControl1_MouseDown;
@@ -209,7 +209,7 @@
             // 
             barButtonItemDuzenle.Caption = "Düzenle";
             barButtonItemDuzenle.Id = 0;
-            barButtonItemDuzenle.ImageOptions.SvgImage = PackList.Properties.Resources.editnames4;
+            barButtonItemDuzenle.ImageOptions.SvgImage = PackList.Properties.Resources.Edit;
             barButtonItemDuzenle.Name = "barButtonItemDuzenle";
             barButtonItemDuzenle.ItemClick += barButtonItemDuzenle_ItemClick;
             // 
@@ -217,8 +217,9 @@
             // 
             barButtonItemSil.Caption = "Çıkar";
             barButtonItemSil.Id = 1;
-            barButtonItemSil.ImageOptions.SvgImage = PackList.Properties.Resources.editnames4;
+            barButtonItemSil.ImageOptions.SvgImage = PackList.Properties.Resources.Delete2;
             barButtonItemSil.Name = "barButtonItemSil";
+            barButtonItemSil.ItemClick += barButtonItemSil_ItemClick;
             // 
             // barManager1
             // 
@@ -242,7 +243,7 @@
             // 
             barDockControlBottom.CausesValidation = false;
             barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            barDockControlBottom.Location = new System.Drawing.Point(0, 524);
+            barDockControlBottom.Location = new System.Drawing.Point(0, 526);
             barDockControlBottom.Manager = barManager1;
             barDockControlBottom.Size = new System.Drawing.Size(783, 0);
             // 
@@ -252,7 +253,7 @@
             barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             barDockControlLeft.Manager = barManager1;
-            barDockControlLeft.Size = new System.Drawing.Size(0, 524);
+            barDockControlLeft.Size = new System.Drawing.Size(0, 526);
             // 
             // barDockControlRight
             // 
@@ -260,7 +261,7 @@
             barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             barDockControlRight.Location = new System.Drawing.Point(783, 0);
             barDockControlRight.Manager = barManager1;
-            barDockControlRight.Size = new System.Drawing.Size(0, 524);
+            barDockControlRight.Size = new System.Drawing.Size(0, 526);
             // 
             // splashScreenManager1
             // 
@@ -270,7 +271,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(783, 524);
+            ClientSize = new System.Drawing.Size(783, 526);
             Controls.Add(gridControl1);
             Controls.Add(panelControl1);
             Controls.Add(barDockControlLeft);

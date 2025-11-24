@@ -105,7 +105,7 @@ namespace QR_CodeScanner
                     SaveToDatabase();
                     ClearGridView();
                     splashScreenManager1.CloseWaitForm();
-                    textEditPosetBarkod.Focus();                  
+                    textEditPosetBarkod.Focus();
 
                 }
                 else
@@ -129,10 +129,10 @@ namespace QR_CodeScanner
         private void SaveToDatabase()
         {
             try
-            {               
+            {
                 if (gridControl1.DataSource is System.Data.DataTable dataTable)
                 {
-                    
+
                     foreach (DataRow row in dataTable.Rows)
                     {
                         posetPaket = new()
@@ -152,6 +152,7 @@ namespace QR_CodeScanner
                         {
                             _posetPaketManager.TInsert(item);
                         }
+                        appSettings appSettings = new appSettings();
                         appSettings.PrintDocument("Etiket", "QR Code", posetPaket.PaketBarkod.ToString());
                     }
                     else
@@ -163,9 +164,9 @@ namespace QR_CodeScanner
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show("Hata: "+ ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
 
 
         }
@@ -191,8 +192,9 @@ namespace QR_CodeScanner
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             var pack = _posetPaketManager.GetPackFromMaxId();
-            if(pack != null)
+            if (pack != null)
             {
+                appSettings appSettings = new appSettings();
                 appSettings.PrintDocument("Etiket", "QR Code", pack.PaketBarkod);
             }
             else
@@ -200,6 +202,30 @@ namespace QR_CodeScanner
                 XtraMessageBox.Show("Kayıtlı barkod bulunamadı", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void barButtonItemSil_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var Id = gridView1.GetFocusedRowCellValue("ID");
+
+            if (Id != null)
+            {
+                var result = XtraMessageBox.Show("Seçili kaydı silmek istediğinize emin misiniz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    var posetPaket = _posetPaketManager.TGetById(Convert.ToInt32(Id));
+                    if (posetPaket != null)
+                    {
+                        _posetPaketManager.TDelete(posetPaket);
+                        gridView1.DeleteRow(gridView1.FocusedRowHandle);
+                        XtraMessageBox.Show("Kayıt silindi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Kayıt bulunamadı", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }
